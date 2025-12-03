@@ -9,13 +9,15 @@ class CharDataset(Dataset):
 
     def __init__(self, config, data):
 
-        chars = ... # get characters from the input data
+        chars = sorted(list(set(data))) # get characters from the input data # IMPLEMENTED
         self.stoi = { ch:i for i,ch in enumerate(chars) } # map characters to integer indices
-
+        self.itos = { i:ch for i,ch in enumerate(chars) } # similarly, map integer to indices, necessary for prediction # IMPLEMENTED
+        self.vocab_size = len(chars) # IMPLEMENTED
+        
         ...
 
     def get_vocab_size(self):
-        raise NotImplementedError()
+        return self.vocab_size # IMPLEMENTED
 
     def __len__(self):
         raise NotImplementedError()
